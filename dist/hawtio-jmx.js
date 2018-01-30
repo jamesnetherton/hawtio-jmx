@@ -8701,7 +8701,7 @@ var JVM;
             var _this = this;
             if (args === void 0) { args = []; }
             return this.$q(function (resolve, reject) {
-                _this.jolokia.execute(mbean, operation, args, { success: function (response) { return resolve(response.value); } }, { error: function (response) {
+                _this.jolokia.request({ type: 'exec', mbean: mbean, operation: operation, arguments: args }, { success: function (response) { return resolve(response.value); } }, { error: function (response) {
                         JVM.log.error("JolokiaService.executeOperation('" + mbean + "', '" + operation + "', '" + args + "') failed. Error: " + response.error);
                         reject(response.error);
                     }
